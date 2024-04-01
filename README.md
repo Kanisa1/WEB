@@ -32,4 +32,7 @@ docker run -d -p 8080:80 project-management-app
 
 - The development process prioritized rapid prototyping and testing of core features to create a minimum viable product (MVP) for initial market testing.
 
+  ## The link to the Docker Hub page
+  https://hub.docker.com/repository/docker/kanisa1/web/tags?page=1&ordering=last_updated
+
 
