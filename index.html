@@ -1,0 +1,97 @@
+CTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Management App</title>
+<style>
+/* CSS Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.task-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Project Management App</h1>
+  <form id="taskForm">
+    <input type="text" id="taskInput" placeholder="Add new task..." required>
+    <button type="submit">Add Task</button>
+  </form>
+  <ul id="taskList" class="task-list">
+    <!-- Task items will be dynamically added here -->
+  </ul>
+</div>
+
+<script>
+// JavaScript code
+document.addEventListener('DOMContentLoaded', function() {
+  const taskForm = document.getElementById('taskForm');
+  const taskInput = document.getElementById('taskInput');
+  const taskList = document.getElementById('taskList');
+
+  // Add task event
+  taskForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const taskText = taskInput.value.trim();
+    if (taskText !== '') {
+      addTask(taskText);
+      taskInput.value = '';
+    }
+  });
+
+  // Mark task as completed
+  taskList.addEventListener('change', function(e) {
+    if (e.target && e.target.matches('input[type="checkbox"]')) {
+      const taskItem = e.target.closest('.task-item');
+      taskItem.classList.toggle('completed');
+    }
+  });
+
+  // Function to add a new task
+  function addTask(text) {
+    const taskItem = document.createElement('li');
+    taskItem.classList.add('task-item');
+    taskItem.innerHTML = `
+      <input type="checkbox">
+      <span>${text}</span>
+    `;
+    taskList.appendChild(taskItem);
+  }
+});
+</script>
+
+</body>
+</html>
+
+
